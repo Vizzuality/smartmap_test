@@ -42,8 +42,7 @@
     {
       "layers": {
         "layer-0": {
-          "cartocss": "#dom_indicators{polygon-fill: #FFFFB2; polygon-opacity: 0.8; line-color: #FFF; line-width: 0.5; line-opacity: 1; } #dom_indicators [ value <= 7] {polygon-fill: #B10026; } #dom_indicators [ value <= 7] {polygon-fill: #E31A1C; } #dom_indicators [ value <= 3] {polygon-fill: #FC4E2A; } #dom_indicators [ value <= 2] {polygon-fill: #FD8D3C; } #dom_indicators [ value <= 2] {polygon-fill: #FEB24C; } #dom_indicators [ value <= 1] {polygon-fill: #FED976; } #dom_indicators [ value <= 0] {polygon-fill: #FFFFB2; }", 
-          "sql": "SELECT b.cartodb_id, b.name_1, a.airy as value1, a.topop as value2, a.airy*1000/a.topop as value , b.the_geom_webmercator FROM dom_indicators a join adm2 b on a.codgov::integer=b.codgov::integer  ",
+          "cartocss": "#adm1{polygon-fill: #FFFFB2; polygon-opacity: 0.8; line-color: #FFF; line-width: 0.5; line-opacity: 1; } #adm1 [ value <= 72] {polygon-fill: #B10026; } #adm1 [ value <= 30] {polygon-fill: #E31A1C; } #adm1 [ value <= 21] {polygon-fill: #FC4E2A; } #adm1 [ value <= 17] {polygon-fill: #FD8D3C; } #adm1 [ value <= 12] {polygon-fill: #FEB24C; } #adm1 [ value <= 8] {polygon-fill: #FED976; } #adm1 [ value <= 4] {polygon-fill: #FFFFB2; }", "sql": "SELECT b.cartodb_id, b.name_1, a.airy as value1, a.topop as value2, a.airy*1000/a.topop as value , b.the_geom_webmercator FROM dom_indicators a join adm2 b on a.codgov::integer=b.codgov::integer  ",
           "interactivity": "cartodb_id"
         }
       },
