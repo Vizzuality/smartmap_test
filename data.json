@@ -1,0 +1,58 @@
+{
+  "interactions": [
+    {
+      "layers": {
+        "layer-0": {
+          "cartocss": "#p {polygon-fill: red; line-color: #FFF;}",
+          "sql": "SELECT b.cartodb_id, b.name_1, a.airn as value , b.the_geom_webmercator FROM dom_indicators a join adm1 b on a.codgov::integer=b.codgov::integer WHERE a.airn BETWEEN 10000 AND 50000",
+          "interactivity": "cartodb_id"
+        }
+      },
+      "name": "a",
+      "className": "test-1",
+      "text": "Airn >10K < 50K (ADM1)"
+    },
+
+    {
+      "layers": {
+        "layer-0": {
+          "cartocss": "#p {polygon-fill: blue; line-color: #FFF;}",
+          "sql": "WITH p as (SELECT b.cartodb_id, b.name_1, a.airn as value1, airy as value, b.the_geom_webmercator FROM dom_indicators a join adm1 b on a.codgov::integer=b.codgov::integer) select * from p where value1>10000 AND  value >10000",
+          "interactivity": "cartodb_id"
+        }
+      },
+      "name": "a",
+      "className": "test-2",
+      "text": "Airn> 10K AND Airy > 10K (ADM1)"
+    },
+
+    {
+      "layers": {
+        "layer-0": {
+          "cartocss": "#p {polygon-fill: gold; line-color: #FFF;}",
+          "sql": "WITH p as (SELECT b.cartodb_id, b.name_1, a.airn as value1, airy as value, b.the_geom_webmercator FROM dom_indicators a join adm1 b on a.codgov::integer=b.codgov::integer WHERE a.airn>30000 ) select 1 cartodb_id, ST_UNION (the_geom_webmercator) as the_geom_webmercator, 'Average' as name_1, avg(value1) as value  from p ",
+          "interactivity": "cartodb_id, value"
+        }
+      },
+      "name": "a",
+      "className": "test-3",
+      "text": "Airn >30K average (ADM1)"
+    },
+
+    {
+      "layers": {
+        "layer-0": {
+          "cartocss": "#dom_indicators{polygon-fill: #FFFFB2; polygon-opacity: 0.8; line-color: #FFF; line-width: 0.5; line-opacity: 1; } #dom_indicators [ value <= 7] {polygon-fill: #B10026; } #dom_indicators [ value <= 7] {polygon-fill: #E31A1C; } #dom_indicators [ value <= 3] {polygon-fill: #FC4E2A; } #dom_indicators [ value <= 2] {polygon-fill: #FD8D3C; } #dom_indicators [ value <= 2] {polygon-fill: #FEB24C; } #dom_indicators [ value <= 1] {polygon-fill: #FED976; } #dom_indicators [ value <= 0] {polygon-fill: #FFFFB2; }", 
+          "sql": "SELECT b.cartodb_id, b.name_1, a.airy as value1, a.topop as value2, a.airy*1000/a.topop as value , b.the_geom_webmercator FROM dom_indicators a join adm2 b on a.codgov::integer=b.codgov::integer  ",
+          "interactivity": "cartodb_id"
+        }
+      },
+      "name": "a",
+      "className": "test-1",
+      "text": "Internet ratio (airy per thousand - ADM2)"
+    }
+  ],
+
+  "vizjson": "https://iadb.cartodb.com/api/v2/viz/78437680-7c85-11e5-b017-0ea31932ec1d/viz.json"
+
+}
